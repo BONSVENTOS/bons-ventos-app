@@ -239,30 +239,274 @@
             setTimeout(() => {
                 event.target.submit(); // Envia o formulário de verdade para o Formspree
             }, 500); // Aguarda 0.5 segundos antes de enviar
+    <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bons Ventos Transporte e Logística</title>
+    <style>
+        /* Estilos CSS */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #0056b3;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #004085;
+            padding: 0.5rem 0;
+            text-align: center;
+        }
+        nav button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.2rem;
+            margin: 0 0.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        nav button:hover {
+            background-color: #0056b3;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        section {
+            display: none; /* Todas as seções começam ocultas */
+            padding: 20px 0;
+            border-top: 1px solid #eee;
+            margin-top: 20px;
+        }
+        section:first-of-type {
+            border-top: none;
+            margin-top: 0;
+        }
+        section.active {
+            display: block; /* A seção ativa é exibida */
+        }
+        h2 {
+            color: #007bff;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea,
+        select { /* Adicionado 'select' para estilizar o dropdown */
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        button[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        button[type="submit"]:hover {
+            background-color: #218838;
+        }
+        .info-box {
+            background-color: #d4edda; /* Cor para mensagens de sucesso */
+            border-left: 5px solid #28a745;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            color: #155724; /* Cor do texto para mensagens de sucesso */
+        }
+        .hidden-fields { /* Estilo para esconder/mostrar campos */
+            display: none;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            background-color: #333;
+            color: white;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bons Ventos Transporte e Logística</h1>
+        <p>Soluções completas em transporte de cargas a granel e negociação.</p>
+    </header>
+
+    <nav>
+        <button onclick="showSection('servicos')">Serviços</button>
+        <button onclick="showSection('contato_principal')">Contato</button>
+        <button onclick="showSection('contato_direto')">Fale Conosco</button>
+    </nav>
+
+    <div class="container">
+        <section id="servicos" class="active">
+            <h2>Nossos Serviços</h2>
+            <p>A Bons Ventos Transporte e Logística oferece soluções especializadas para as suas necessidades:</p>
+            <ul>
+                <li>**Transporte de Cargas a Granel:** Movimentação eficiente e segura de grãos, minérios e outros materiais a granel.</li>
+                <li>**Compra e Venda de Granel:** Negociação de produtos a granel, oferecendo as melhores condições de mercado.</li>
+                <li>**Logística Otimizada:** Planejamento e execução para otimizar suas operações de transporte e armazenamento.</li>
+            </ul>
+            <p>Conte com a expertise da Bons Ventos para levar seu negócio mais longe!</p>
+        </section>
+
+        <section id="contato_principal">
+            <h2>Fale Conosco / Solicite um Orçamento</h2>
+            <p>Preencha seus dados de contato e selecione o motivo do seu contato. Entraremos em contato o mais breve possível!</p>
+            <form action="https://formspree.io/f/mrbkrbbl" method="POST" onsubmit="exibirMensagemSucessoContato(event)">
+                <label for="nomeContato">Seu Nome Completo:</label>
+                <input type="text" id="nomeContato" name="Nome_Completo" required>
+
+                <label for="emailContato">Seu Email:</label>
+                <input type="email" id="emailContato" name="Email_Contato" required>
+
+                <label for="telefoneContato">Seu Telefone:</label>
+                <input type="tel" id="telefoneContato" name="Telefone_Contato">
+
+                <label for="tipoContato">O que você precisa?</label>
+                <select id="tipoContato" name="Tipo_de_Contato" onchange="mostrarCamposAdicionais()">
+                    <option value="">Selecione uma opção</option>
+                    <option value="orcamento">Solicitar Orçamento de Frete</option>
+                    <option value="duvida_interesse">Tirar Dúvida / Registrar Interesse</option>
+                </select>
+
+                <div id="camposOrcamento" class="hidden-fields">
+                    <h3 style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">Detalhes do Orçamento</h3>
+                    <label for="origemCarga">Origem da Carga:</label>
+                    <input type="text" id="origemCarga" name="Origem_Carga">
+
+                    <label for="destinoCarga">Destino da Carga:</label>
+                    <input type="text" id="destinoCarga" name="Destino_Carga">
+
+                    <label for="detalhesOrcamento">Detalhes da Carga (tipo de granel, peso, dimensões):</label>
+                    <textarea id="detalhesOrcamento" rows="5" name="Detalhes_Carga_Orcamento"></textarea>
+                </div>
+
+                <div id="camposDuvidaInteresse" class="hidden-fields">
+                    <h3 style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">Sua Mensagem</h3>
+                    <label for="mensagemDuvidaInteresse">Por favor, descreva sua dúvida ou interesse:</label>
+                    <textarea id="mensagemDuvidaInteresse" rows="5" name="Mensagem_Duvida_Interesse"></textarea>
+                </div>
+
+                <button type="submit">Enviar Solicitação</button>
+            </form>
+            <div id="mensagemContato" class="info-box" style="display: none;"></div>
+        </section>
+
+        <section id="contato_direto">
+            <h2>Canais de Contato Direto</h2>
+            <p>Para um contato rápido e direto, utilize os canais abaixo:</p>
+            <ul>
+                <li>**Telefone:** (31) 7150-8006</li>
+                <li>**WhatsApp:** (31) 7150-8006</li>
+                <li>**Email:** contato@bonsventostransportes.com (Sugestão de e-mail, personalize se tiver outro)</li>
+                <li>**Endereço:** [Seu Endereço Completo Aqui, se quiser exibir]</li>
+            </ul>
+            <p>Estamos prontos para te atender!</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Bons Ventos Transporte e Logística. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Funções JavaScript
+        function showSection(sectionId) {
+            // Oculta todas as seções
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.remove('active');
+            });
+            // Mostra a seção desejada
+            document.getElementById(sectionId).classList.add('active');
         }
 
+        // Função para mostrar/esconder campos adicionais
+        function mostrarCamposAdicionais() {
+            const tipoContato = document.getElementById('tipoContato').value;
+            const camposOrcamento = document.getElementById('camposOrcamento');
+            const camposDuvidaInteresse = document.getElementById('camposDuvidaInteresse');
 
-        // Mantida a função submitCadastro como estava (apenas para console/simulação)
-        function submitCadastro(event) {
-            event.preventDefault(); // Impede o envio padrão do formulário
-            const nome = document.getElementById('nomeCadastro').value;
-            const email = document.getElementById('emailCadastro').value;
-            const telefone = document.getElementById('telefoneCadastro').value;
-            const tipoServico = document.getElementById('tipoServicoCadastro').value;
-            const observacoes = document.getElementById('observacoesCadastro').value;
-            const mensagemDiv = document.getElementById('mensagemCadastro');
+            camposOrcamento.style.display = 'none';
+            camposDuvidaInteresse.style.display = 'none';
 
-            console.log('Dados do Cadastro (simulação):', { nome, email, telefone, tipoServico, observacoes });
+            // Adiciona/remove o atributo 'required' dinamicamente
+            // Campos de orçamento
+            document.getElementById('origemCarga').required = false;
+            document.getElementById('destinoCarga').required = false;
+            // Campos de dúvida/interesse
+            document.getElementById('mensagemDuvidaInteresse').required = false;
 
+
+            if (tipoContato === 'orcamento') {
+                camposOrcamento.style.display = 'block';
+                document.getElementById('origemCarga').required = true;
+                document.getElementById('destinoCarga').required = true;
+            } else if (tipoContato === 'duvida_interesse') {
+                camposDuvidaInteresse.style.display = 'block';
+                document.getElementById('mensagemDuvidaInteresse').required = true;
+            }
+        }
+
+        // Esta função será chamada QUANDO o formulário de CONTATO PRINCIPAL for enviado
+        function exibirMensagemSucessoContato(event) {
+            event.preventDefault(); // Previne o envio padrão para exibir mensagem no site
+
+            const nome = document.getElementById('nomeContato').value;
+            const mensagemDiv = document.getElementById('mensagemContato');
+            
             mensagemDiv.style.display = 'block';
-            mensagemDiv.innerHTML = `Cadastro/Registro de **${nome}** realizado com sucesso! Em breve entraremos em contato.`;
+            mensagemDiv.innerHTML = `Obrigado, **${nome}**! Sua solicitação foi enviada com sucesso! Entraremos em contato em breve.`;
 
-            event.target.reset();
+            event.target.reset(); // Limpa o formulário
+
+            // Oculta os campos adicionais após o reset
+            document.getElementById('camposOrcamento').style.display = 'none';
+            document.getElementById('camposDuvidaInteresse').style.display = 'none';
+            document.getElementById('tipoContato').value = ''; // Reseta a seleção
+
+            // Envia o formulário de verdade para o Formspree após um pequeno delay
+            setTimeout(() => {
+                event.target.submit(); 
+            }, 500); 
         }
 
         // Garante que a seção de serviços seja mostrada ao carregar a página
         document.addEventListener('DOMContentLoaded', () => {
             showSection('servicos');
+            mostrarCamposAdicionais(); // Garante que os campos extras estejam ocultos no início
         });
     </script>
 </body>
