@@ -96,11 +96,12 @@
             background-color: #218838;
         }
         .info-box {
-            background-color: #e9f7ef;
+            background-color: #d4edda; /* Cor para mensagens de sucesso */
             border-left: 5px solid #28a745;
             padding: 15px;
             margin-bottom: 15px;
             border-radius: 4px;
+            color: #155724; /* Cor do texto para mensagens de sucesso */
         }
         footer {
             text-align: center;
@@ -120,7 +121,6 @@
 
     <nav>
         <button onclick="showSection('servicos')">Serviços</button>
-        <button onclick="showSection('rastreamento')">Rastreamento</button>
         <button onclick="showSection('orcamento')">Orçamento</button>
         <button onclick="showSection('cadastro')">Cadastro</button>
         <button onclick="showSection('contato')">Contato</button>
@@ -138,39 +138,27 @@
             <p>Conte com a expertise da Bons Ventos para levar seu negócio mais longe!</p>
         </section>
 
-        <section id="rastreamento">
-            <h2>Rastrear Encomenda</h2>
-            <p>Digite o código de rastreamento da sua encomenda para verificar o status atual.</p>
-            <div>
-                <label for="codigoRastreamento">Código de Rastreamento:</label>
-                <input type="text" id="codigoRastreamento" placeholder="Ex: BV123456789">
-                <button onclick="rastrearEncomenda()">Rastrear</button>
-            </div>
-            <div id="statusRastreamento" class="info-box" style="display: none;">
-                </div>
-        </section>
-
         <section id="orcamento">
             <h2>Solicitar Orçamento de Frete</h2>
             <p>Preencha os dados abaixo para solicitar uma cotação. Entraremos em contato o mais breve possível!</p>
-            <form onsubmit="submitOrcamento(event)">
+            <form action="https://formspree.io/f/mrbkrbbl" method="POST" onsubmit="exibirMensagemSucessoOrcamento(event)">
                 <label for="nomeOrcamento">Seu Nome:</label>
-                <input type="text" id="nomeOrcamento" required>
+                <input type="text" id="nomeOrcamento" name="Nome" required>
 
                 <label for="emailOrcamento">Seu Email:</label>
-                <input type="email" id="emailOrcamento" required>
+                <input type="email" id="emailOrcamento" name="Email" required>
 
                 <label for="telefoneOrcamento">Seu Telefone:</label>
-                <input type="tel" id="telefoneOrcamento">
+                <input type="tel" id="telefoneOrcamento" name="Telefone">
 
                 <label for="origemOrcamento">Origem da Carga:</label>
-                <input type="text" id="origemOrcamento" required>
+                <input type="text" id="origemOrcamento" name="Origem" required>
 
                 <label for="destinoOrcamento">Destino da Carga:</label>
-                <input type="text" id="destinoOrcamento" required>
+                <input type="text" id="destinoOrcamento" name="Destino" required>
 
                 <label for="detalhesCarga">Detalhes da Carga (tipo de granel, peso, dimensões):</label>
-                <textarea id="detalhesCarga" rows="5"></textarea>
+                <textarea id="detalhesCarga" rows="5" name="Detalhes_da_Carga"></textarea>
 
                 <button type="submit">Solicitar Orçamento</button>
             </form>
@@ -182,19 +170,19 @@
             <p>Utilize este formulário para um cadastro rápido ou para registrar seu interesse em nossos serviços.</p>
             <form onsubmit="submitCadastro(event)">
                 <label for="nomeCadastro">Nome Completo:</label>
-                <input type="text" id="nomeCadastro" required>
+                <input type="text" id="nomeCadastro" name="NomeCadastro" required>
 
                 <label for="emailCadastro">Email:</label>
-                <input type="email" id="emailCadastro">
+                <input type="email" id="emailCadastro" name="EmailCadastro">
 
                 <label for="telefoneCadastro">Telefone:</label>
-                <input type="tel" id="telefoneCadastro">
+                <input type="tel" id="telefoneCadastro" name="TelefoneCadastro">
 
                 <label for="tipoServicoCadastro">Serviço de Interesse:</label>
-                <input type="text" id="tipoServicoCadastro" placeholder="Ex: Transporte de Grãos, Compra de Minério">
+                <input type="text" id="tipoServicoCadastro" name="ServicoInteresse" placeholder="Ex: Transporte de Grãos, Compra de Minério">
 
                 <label for="observacoesCadastro">Observações / Detalhes Adicionais:</label>
-                <textarea id="observacoesCadastro" rows="5"></textarea>
+                <textarea id="observacoesCadastro" rows="5" name="Observacoes"></textarea>
 
                 <button type="submit">Registrar</button>
             </form>
@@ -229,70 +217,32 @@
             document.getElementById(sectionId).classList.add('active');
         }
 
-        function rastrearEncomenda() {
-            const codigo = document.getElementById('codigoRastreamento').value.trim();
-            const statusDiv = document.getElementById('statusRastreamento');
+        // Esta função será chamada QUANDO o formulário for enviado
+        // para exibir a mensagem de sucesso NO SITE.
+        // O Formspree cuidará do ENVIO REAL dos dados.
+        function exibirMensagemSucessoOrcamento(event) {
+            // Previne o envio padrão para que possamos mostrar a mensagem no site
+            event.preventDefault(); 
 
-            if (codigo === '') {
-                statusDiv.style.display = 'block';
-                statusDiv.style.backgroundColor = '#fff3cd'; /* Amarelo claro para aviso */
-                statusDiv.style.borderColor = '#ffc107';    /* Borda amarela */
-                statusDiv.innerHTML = 'Por favor, digite um código de rastreamento.';
-                return;
-            }
-
-            // Simulação de rastreamento (você pode integrar com uma API real depois)
-            let status = '';
-            let bgColor = '';
-            let borderColor = '';
-
-            if (codigo.toLowerCase().includes('entregue')) {
-                status = `Encomenda **${codigo}** foi **ENTREGUE** em 27/06/2025.`;
-                bgColor = '#d4edda'; // Verde claro
-                borderColor = '#28a745';
-            } else if (codigo.toLowerCase().includes('transito')) {
-                status = `Encomenda **${codigo}** está **EM TRÂNSITO** para o destino.`;
-                bgColor = '#e2e3e5'; // Cinza claro
-                borderColor = '#6c757d';
-            } else if (codigo.toLowerCase().includes('aguardando')) {
-                status = `Encomenda **${codigo}** está **AGUARDANDO COLETA**.`;
-                bgColor = '#f8d7da'; // Vermelho claro
-                borderColor = '#dc3545';
-            } else {
-                status = `Código **${codigo}** não encontrado ou status desconhecido. Por favor, verifique.`;
-                bgColor = '#fff3cd'; // Amarelo claro
-                borderColor = '#ffc107';
-            }
-
-            statusDiv.style.display = 'block';
-            statusDiv.style.backgroundColor = bgColor;
-            statusDiv.style.borderColor = borderColor;
-            statusDiv.innerHTML = status;
-        }
-
-        function submitOrcamento(event) {
-            event.preventDefault(); // Impede o envio padrão do formulário
             const nome = document.getElementById('nomeOrcamento').value;
-            const email = document.getElementById('emailOrcamento').value;
-            const telefone = document.getElementById('telefoneOrcamento').value;
-            const origem = document.getElementById('origemOrcamento').value;
-            const destino = document.getElementById('destinoOrcamento').value;
-            const detalhes = document.getElementById('detalhesCarga').value;
             const mensagemDiv = document.getElementById('mensagemOrcamento');
-
-            // Aqui você enviaria os dados para um servidor (futuramente)
-            // Por enquanto, apenas exibimos uma mensagem de sucesso
-            console.log('Dados do Orçamento:', { nome, email, telefone, origem, destino, detalhes });
-
+            
             mensagemDiv.style.display = 'block';
-            mensagemDiv.style.backgroundColor = '#d4edda'; /* Verde claro */
-            mensagemDiv.style.borderColor = '#28a745';    /* Borda verde */
-            mensagemDiv.innerHTML = `Obrigado, **${nome}**! Sua solicitação de orçamento foi enviada. Entraremos em contato em breve pelo email **${email}** ou telefone **${telefone}**.`;
+            mensagemDiv.innerHTML = `Obrigado, **${nome}**! Sua solicitação de orçamento foi enviada com sucesso! Entraremos em contato em breve.`;
 
-            // Limpa o formulário após o envio
+            // Opcional: Você pode querer limpar o formulário após a mensagem
             event.target.reset();
+
+            // Após exibir a mensagem, enviamos o formulário para o Formspree
+            // Usamos setTimeout para dar um tempo para a mensagem aparecer antes de redirecionar/enviar
+            // Isso é um truque para sites estáticos.
+            setTimeout(() => {
+                event.target.submit(); // Envia o formulário de verdade para o Formspree
+            }, 500); // Aguarda 0.5 segundos antes de enviar
         }
 
+
+        // Mantida a função submitCadastro como estava (apenas para console/simulação)
         function submitCadastro(event) {
             event.preventDefault(); // Impede o envio padrão do formulário
             const nome = document.getElementById('nomeCadastro').value;
@@ -302,16 +252,11 @@
             const observacoes = document.getElementById('observacoesCadastro').value;
             const mensagemDiv = document.getElementById('mensagemCadastro');
 
-            // Aqui você enviaria os dados para um servidor (futuramente)
-            // Por enquanto, apenas exibimos uma mensagem de sucesso
-            console.log('Dados do Cadastro:', { nome, email, telefone, tipoServico, observacoes });
+            console.log('Dados do Cadastro (simulação):', { nome, email, telefone, tipoServico, observacoes });
 
             mensagemDiv.style.display = 'block';
-            mensagemDiv.style.backgroundColor = '#d4edda'; /* Verde claro */
-            mensagemDiv.style.borderColor = '#28a745';    /* Borda verde */
             mensagemDiv.innerHTML = `Cadastro/Registro de **${nome}** realizado com sucesso! Em breve entraremos em contato.`;
 
-            // Limpa o formulário após o envio
             event.target.reset();
         }
 
