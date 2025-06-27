@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bons Ventos Transporte e Logística</title>
+    <style>
+        /* Estilos CSS */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #0056b3;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #004085;
+            padding: 0.5rem 0;
+            text-align: center;
+        }
+        nav button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.2rem;
+            margin: 0 0.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        nav button:hover {
+            background-color: #0056b3;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        section {
+            display: none; /* Todas as seções começam ocultas */
+            padding: 20px 0;
+            border-top: 1px solid #eee;
+            margin-top: 20px;
+        }
+        section:first-of-type {
+            border-top: none;
+            margin-top: 0;
+        }
+        section.active {
+            display: block; /* A seção ativa é exibida */
+        }
+        h2 {
+            color: #007bff;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        button[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        button[type="submit"]:hover {
+            background-color: #218838;
+        }
+        .info-box {
+            background-color: #e9f7ef;
+            border-left: 5px solid #28a745;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            background-color: #333;
+            color: white;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bons Ventos Transporte e Logística</h1>
+        <p>Soluções completas em transporte de cargas a granel e negociação.</p>
+    </header>
+
+    <nav>
+        <button onclick="showSection('servicos')">Serviços</button>
+        <button onclick="showSection('rastreamento')">Rastreamento</button>
+        <button onclick="showSection('orcamento')">Orçamento</button>
+        <button onclick="showSection('cadastro')">Cadastro</button>
+        <button onclick="showSection('contato')">Contato</button>
+    </nav>
+
+    <div class="container">
+        <section id="servicos" class="active">
+            <h2>Nossos Serviços</h2>
+            <p>A Bons Ventos Transporte e Logística oferece soluções especializadas para as suas necessidades:</p>
+            <ul>
+                <li>**Transporte de Cargas a Granel:** Movimentação eficiente e segura de grãos, minérios e outros materiais a granel.</li>
+                <li>**Compra e Venda de Granel:** Negociação de produtos a granel, oferecendo as melhores condições de mercado.</li>
+                <li>**Logística Otimizada:** Planejamento e execução para otimizar suas operações de transporte e armazenamento.</li>
+            </ul>
+            <p>Conte com a expertise da Bons Ventos para levar seu negócio mais longe!</p>
+        </section>
+
+        <section id="rastreamento">
+            <h2>Rastrear Encomenda</h2>
+            <p>Digite o código de rastreamento da sua encomenda para verificar o status atual.</p>
+            <div>
+                <label for="codigoRastreamento">Código de Rastreamento:</label>
+                <input type="text" id="codigoRastreamento" placeholder="Ex: BV123456789">
+                <button onclick="rastrearEncomenda()">Rastrear</button>
+            </div>
+            <div id="statusRastreamento" class="info-box" style="display: none;">
+                </div>
+        </section>
+
+        <section id="orcamento">
+            <h2>Solicitar Orçamento de Frete</h2>
+            <p>Preencha os dados abaixo para solicitar uma cotação. Entraremos em contato o mais breve possível!</p>
+            <form onsubmit="submitOrcamento(event)">
+                <label for="nomeOrcamento">Seu Nome:</label>
+                <input type="text" id="nomeOrcamento" required>
+
+                <label for="emailOrcamento">Seu Email:</label>
+                <input type="email" id="emailOrcamento" required>
+
+                <label for="telefoneOrcamento">Seu Telefone:</label>
+                <input type="tel" id="telefoneOrcamento">
+
+                <label for="origemOrcamento">Origem da Carga:</label>
+                <input type="text" id="origemOrcamento" required>
+
+                <label for="destinoOrcamento">Destino da Carga:</label>
+                <input type="text" id="destinoOrcamento" required>
+
+                <label for="detalhesCarga">Detalhes da Carga (tipo de granel, peso, dimensões):</label>
+                <textarea id="detalhesCarga" rows="5"></textarea>
+
+                <button type="submit">Solicitar Orçamento</button>
+            </form>
+            <div id="mensagemOrcamento" class="info-box" style="display: none;"></div>
+        </section>
+
+        <section id="cadastro">
+            <h2>Cadastro Rápido / Registro de Interesse</h2>
+            <p>Utilize este formulário para um cadastro rápido ou para registrar seu interesse em nossos serviços.</p>
+            <form onsubmit="submitCadastro(event)">
+                <label for="nomeCadastro">Nome Completo:</label>
+                <input type="text" id="nomeCadastro" required>
+
+                <label for="emailCadastro">Email:</label>
+                <input type="email" id="emailCadastro">
+
+                <label for="telefoneCadastro">Telefone:</label>
+                <input type="tel" id="telefoneCadastro">
+
+                <label for="tipoServicoCadastro">Serviço de Interesse:</label>
+                <input type="text" id="tipoServicoCadastro" placeholder="Ex: Transporte de Grãos, Compra de Minério">
+
+                <label for="observacoesCadastro">Observações / Detalhes Adicionais:</label>
+                <textarea id="observacoesCadastro" rows="5"></textarea>
+
+                <button type="submit">Registrar</button>
+            </form>
+            <div id="mensagemCadastro" class="info-box" style="display: none;"></div>
+        </section>
+
+        <section id="contato">
+            <h2>Fale Conosco</h2>
+            <p>A equipe da Bons Ventos está pronta para te atender! Escolha a melhor forma de contato:</p>
+            <ul>
+                <li>**Telefone:** (31) 7150-8006</li>
+                <li>**WhatsApp:** (31) 7150-8006</li>
+                <li>**Email:** contato@bonsventostransportes.com (Sugestão de e-mail, personalize se tiver outro)</li>
+                <li>**Endereço:** [Seu Endereço Completo Aqui, se quiser exibir]</li>
+            </ul>
+            <p>Ou utilize nossos formulários para solicitar um orçamento ou registrar seu interesse.</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Bons Ventos Transporte e Logística. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Funções JavaScript
+        function showSection(sectionId) {
+            // Oculta todas as seções
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.remove('active');
+            });
+            // Mostra a seção desejada
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        function rastrearEncomenda() {
+            const codigo = document.getElementById('codigoRastreamento').value.trim();
+            const statusDiv = document.getElementById('statusRastreamento');
+
+            if (codigo === '') {
+                statusDiv.style.display = 'block';
+                statusDiv.style.backgroundColor = '#fff3cd'; /* Amarelo claro para aviso */
+                statusDiv.style.borderColor = '#ffc107';    /* Borda amarela */
+                statusDiv.innerHTML = 'Por favor, digite um código de rastreamento.';
+                return;
+            }
+
+            // Simulação de rastreamento (você pode integrar com uma API real depois)
+            let status = '';
+            let bgColor = '';
+            let borderColor = '';
+
+            if (codigo.toLowerCase().includes('entregue')) {
+                status = `Encomenda **${codigo}** foi **ENTREGUE** em 27/06/2025.`;
+                bgColor = '#d4edda'; // Verde claro
+                borderColor = '#28a745';
+            } else if (codigo.toLowerCase().includes('transito')) {
+                status = `Encomenda **${codigo}** está **EM TRÂNSITO** para o destino.`;
+                bgColor = '#e2e3e5'; // Cinza claro
+                borderColor = '#6c757d';
+            } else if (codigo.toLowerCase().includes('aguardando')) {
+                status = `Encomenda **${codigo}** está **AGUARDANDO COLETA**.`;
+                bgColor = '#f8d7da'; // Vermelho claro
+                borderColor = '#dc3545';
+            } else {
+                status = `Código **${codigo}** não encontrado ou status desconhecido. Por favor, verifique.`;
+                bgColor = '#fff3cd'; // Amarelo claro
+                borderColor = '#ffc107';
+            }
+
+            statusDiv.style.display = 'block';
+            statusDiv.style.backgroundColor = bgColor;
+            statusDiv.style.borderColor = borderColor;
+            statusDiv.innerHTML = status;
+        }
+
+        function submitOrcamento(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+            const nome = document.getElementById('nomeOrcamento').value;
+            const email = document.getElementById('emailOrcamento').value;
+            const telefone = document.getElementById('telefoneOrcamento').value;
+            const origem = document.getElementById('origemOrcamento').value;
+            const destino = document.getElementById('destinoOrcamento').value;
+            const detalhes = document.getElementById('detalhesCarga').value;
+            const mensagemDiv = document.getElementById('mensagemOrcamento');
+
+            // Aqui você enviaria os dados para um servidor (futuramente)
+            // Por enquanto, apenas exibimos uma mensagem de sucesso
+            console.log('Dados do Orçamento:', { nome, email, telefone, origem, destino, detalhes });
+
+            mensagemDiv.style.display = 'block';
+            mensagemDiv.style.backgroundColor = '#d4edda'; /* Verde claro */
+            mensagemDiv.style.borderColor = '#28a745';    /* Borda verde */
+            mensagemDiv.innerHTML = `Obrigado, **${nome}**! Sua solicitação de orçamento foi enviada. Entraremos em contato em breve pelo email **${email}** ou telefone **${telefone}**.`;
+
+            // Limpa o formulário após o envio
+            event.target.reset();
+        }
+
+        function submitCadastro(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+            const nome = document.getElementById('nomeCadastro').value;
+            const email = document.getElementById('emailCadastro').value;
+            const telefone = document.getElementById('telefoneCadastro').value;
+            const tipoServico = document.getElementById('tipoServicoCadastro').value;
+            const observacoes = document.getElementById('observacoesCadastro').value;
+            const mensagemDiv = document.getElementById('mensagemCadastro');
+
+            // Aqui você enviaria os dados para um servidor (futuramente)
+            // Por enquanto, apenas exibimos uma mensagem de sucesso
+            console.log('Dados do Cadastro:', { nome, email, telefone, tipoServico, observacoes });
+
+            mensagemDiv.style.display = 'block';
+            mensagemDiv.style.backgroundColor = '#d4edda'; /* Verde claro */
+            mensagemDiv.style.borderColor = '#28a745';    /* Borda verde */
+            mensagemDiv.innerHTML = `Cadastro/Registro de **${nome}** realizado com sucesso! Em breve entraremos em contato.`;
+
+            // Limpa o formulário após o envio
+            event.target.reset();
+        }
+
+        // Garante que a seção de serviços seja mostrada ao carregar a página
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('servicos');
+        });
+    </script>
+</body>
+</html>
