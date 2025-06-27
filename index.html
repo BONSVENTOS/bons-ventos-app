@@ -1,399 +1,298 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bons Ventos Transporte e Logística</title>
-  <style>
-    :root {
-      --cor-principal-azul: #0d1b6f;
-      --cor-secundaria-azul: #007bff;
-      --cor-fundo-claro: #f4f4f4;
-      --cor-texto-escuro: #333;
-      --cor-texto-claro: white;
-      --cor-sucesso-fundo: #d4edda;
-      --cor-sucesso-borda: #28a745;
-      --cor-sucesso-texto: #155724;
-      --cor-nav-links: #ffffff;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bons Ventos Transporte e Logística</title>
+    <style>
+        /* Estilos CSS */
+        :root {
+            /* Definindo variáveis CSS para as cores base da sua logo */
+            --cor-principal-azul: #0D1B6F; /* Um azul mais escuro e profundo da logo */
+            --cor-secundaria-azul: #007bff; /* Azul um pouco mais claro para destaque */
+            --cor-fundo-claro: #f4f4f4;
+            --cor-texto-escuro: #333;
+            --cor-texto-claro: white;
+            --cor-sucesso-fundo: #d4edda;
+            --cor-sucesso-borda: #28a745;
+            --cor-sucesso-texto: #155724;
+            --cor-nav-links: #FFFFFF; /* Branco para os links da navegação */
+        }
 
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: var(--cor-principal-azul);
-      color: var(--cor-texto-claro);
-      line-height: 1.6;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--cor-principal-azul); /* Fundo da página com o azul da logo */
+            color: var(--cor-texto-claro); /* Texto padrão claro para contrastar com o fundo */
+            line-height: 1.6;
+        }
 
-    .container {
-      max-width: 900px;
-      margin: 20px auto;
-      background-color: var(--cor-texto-claro);
-      color: var(--cor-texto-escuro);
-      padding: 20px 30px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
+        /* Estilo para o container principal do conteúdo */
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: var(--cor-texto-claro); /* Fundo branco para o conteúdo interno */
+            color: var(--cor-texto-escuro); /* Texto escuro dentro do container branco */
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
 
-    header {
-      background-color: var(--cor-principal-azul);
-      color: var(--cor-texto-claro);
-      padding: 2rem 0;
-      text-align: center;
-    }
+        header {
+            background-color: var(--cor-principal-azul); /* Continua com o azul principal */
+            color: var(--cor-texto-claro);
+            padding: 2rem 0; /* Aumenta o padding para dar mais espaço à logo */
+            text-align: center;
+        }
+        header img.logo {
+            max-width: 280px; /* Aumenta um pouco a logo */
+            height: auto;
+            display: block;
+            margin: 0 auto 15px auto; /* Mais margem abaixo da logo */
+            filter: drop-shadow(0 0 8px rgba(0,0,0,0.4)); /* Adiciona uma pequena sombra para destacar */
+        }
+        header p {
+            font-size: 1.1rem;
+            margin-top: 0;
+            padding: 0 20px; /* Um pouco de padding para o texto da descrição */
+            color: rgba(255, 255, 255, 0.9); /* Um branco um pouco mais suave */
+        }
 
-    header img.logo {
-      max-width: 280px;
-      height: auto;
-      display: block;
-      margin: 0 auto 15px auto;
-      filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.4));
-    }
+        nav {
+            background-color: var(--cor-principal-azul); /* Navegação no mesmo azul da logo */
+            padding: 0.8rem 0; /* Mais padding para os botões */
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1); /* Linha sutil para separar do header */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Sombra para dar profundidade */
+        }
+        nav button {
+            background-color: rgba(255, 255, 255, 0.1); /* Botões semi-transparentes sobre o azul */
+            color: var(--cor-nav-links); /* Cor do texto do botão branco */
+            border: 1px solid rgba(255, 255, 255, 0.3); /* Borda sutil */
+            padding: 0.8rem 1.5rem; /* Aumenta o padding */
+            margin: 0 0.6rem; /* Mais espaçamento entre botões */
+            border-radius: 25px; /* Deixa os botões mais arredondados (pílula) */
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        nav button:hover {
+            background-color: rgba(255, 255, 255, 0.25); /* Fica mais opaco no hover */
+            border-color: var(--cor-nav-links); /* Borda fica branca sólida */
+        }
+        /* Estilo para o botão da seção ativa */
+        nav button.active-nav-button {
+            background-color: var(--cor-secundaria-azul); /* Usa o azul de destaque para o botão ativo */
+            border-color: var(--cor-secundaria-azul);
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Sombra para o botão ativo */
+        }
 
-    header p {
-      font-size: 1.1rem;
-      margin-top: 0;
-      padding: 0 20px;
-      color: rgba(255, 255, 255, 0.9);
-    }
 
-    nav {
-      background-color: var(--cor-principal-azul);
-      padding: 0.8rem 0;
-      text-align: center;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    }
+        section {
+            display: none;
+            padding: 20px 0;
+            border-top: 1px solid #eee;
+            margin-top: 20px;
+        }
+        section:first-of-type {
+            border-top: none;
+            margin-top: 0;
+        }
+        section.active {
+            display: block;
+        }
+        h2 {
+            color: var(--cor-principal-azul); /* Títulos no azul principal */
+            border-bottom: 2px solid var(--cor-principal-azul); /* Borda do título no azul principal */
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        h3 {
+            color: var(--cor-principal-azul); /* Subtítulos no azul principal */
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--cor-texto-escuro); /* Cor do label dentro do container */
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"], /* Adicionado estilo para input number */
+        textarea,
+        select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            color: var(--cor-texto-escuro);
+        }
+        /* Ajuste para inputs number para evitar barras de rolagem desnecessárias */
+        input[type="number"] {
+            -moz-appearance: textfield; /* Para Firefox */
+        }
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
 
-    nav button {
-      background-color: rgba(255, 255, 255, 0.1);
-      color: var(--cor-nav-links);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      padding: 0.8rem 1.5rem;
-      margin: 0 0.6rem;
-      border-radius: 25px;
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: bold;
-      transition: background-color 0.3s ease, border-color 0.3s ease;
-    }
 
-    nav button:hover {
-      background-color: rgba(255, 255, 255, 0.25);
-      border-color: var(--cor-nav-links);
-    }
-
-    nav button.active-nav-button {
-      background-color: var(--cor-secundaria-azul);
-      border-color: var(--cor-secundaria-azul);
-      box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
-    }
-
-    section {
-      display: none;
-      padding: 20px 0;
-      border-top: 1px solid #eee;
-      margin-top: 20px;
-    }
-
-    section:first-of-type {
-      border-top: none;
-      margin-top: 0;
-    }
-
-    section.active {
-      display: block;
-    }
-
-    h2 {
-      color: var(--cor-principal-azul);
-      border-bottom: 2px solid var(--cor-principal-azul);
-      padding-bottom: 10px;
-      margin-bottom: 20px;
-    }
-
-    h3 {
-      color: var(--cor-principal-azul);
-    }
-
-    label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: bold;
-      color: var(--cor-texto-escuro);
-    }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="tel"],
-    input[type="number"],
-    textarea,
-    select {
-      width: calc(100% - 20px);
-      padding: 10px;
-      margin-bottom: 15px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      font-size: 1rem;
-      color: var(--cor-texto-escuro);
-    }
-
-    input[type="number"] {
-      -moz-appearance: textfield;
-    }
-
-    input[type="number"]::-webkit-outer-spin-button,
-    input[type="number"]::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-
-    button[type="submit"] {
-      background-color: var(--cor-sucesso-borda);
-      color: var(--cor-texto-claro);
-      border: none;
-      padding: 12px 25px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 1.1rem;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-      margin-top: 20px;
-    }
-
-    button[type="submit"]:hover {
-      background-color: #218838;
-    }
-
-    .info-box {
-      background-color: var(--cor-sucesso-fundo);
-      border-left: 5px solid var(--cor-sucesso-borda);
-      padding: 15px;
-      margin-bottom: 15px;
-      border-radius: 4px;
-      color: var(--cor-sucesso-texto);
-    }
-
-    .hidden-fields {
-      display: none;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      margin-top: 30px;
-      background-color: var(--cor-principal-azul);
-      color: var(--cor-texto-claro);
-      font-size: 0.9rem;
-    }
-
-    .contact-list {
-      list-style: none;
-      padding: 0;
-    }
-
-    .contact-list li {
-      margin-bottom: 15px;
-    }
-
-    .contact-list a {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      color: var(--cor-texto-escuro);
-      font-weight: bold;
-      font-size: 1.1em;
-      transition: color 0.3s ease;
-    }
-
-    .contact-list a:hover {
-      color: var(--cor-principal-azul);
-    }
-
-    .contact-list a img {
-      vertical-align: middle;
-      height: 28px;
-      margin-right: 10px;
-    }
-
-    .input-group {
-      display: flex;
-      align-items: center;
-      margin-bottom: 15px;
-    }
-
-    .input-group label {
-      flex-basis: 150px;
-      margin-bottom: 0;
-      margin-right: 10px;
-    }
-
-    .input-group input[type="number"] {
-      flex-grow: 1;
-      margin-bottom: 0;
-      margin-right: 10px;
-    }
-
-    .input-group span {
-      font-weight: bold;
-      color: var(--cor-texto-escuro);
-    }
-  </style>
+        button[type="submit"] {
+            background-color: var(--cor-sucesso-borda);
+            color: var(--cor-texto-claro);
+            border: none;
+            padding: 12px 25px; /* Aumentado um pouco o botão de submit */
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem; /* Fonte um pouco maior */
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin-top: 20px; /* Mais espaço acima do botão */
+        }
+        button[type="submit"]:hover {
+            background-color: #218838;
+        }
+        .info-box {
+            background-color: var(--cor-sucesso-fundo);
+            border-left: 5px solid var(--cor-sucesso-borda);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            color: var(--cor-sucesso-texto);
+        }
+        .hidden-fields {
+            display: none;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            background-color: var(--cor-principal-azul); /* Rodapé com o azul principal */
+            color: var(--cor-texto-claro);
+            font-size: 0.9rem;
+        }
+        /* Estilos para os campos de número com unidade */
+        .input-group {
+            display: flex; /* Para alinhar o input e a unidade */
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .input-group label { /* Estilo para o label dentro do input-group */
+            flex-basis: 150px; /* Largura fixa para os labels */
+            margin-bottom: 0;
+            margin-right: 10px;
+        }
+        .input-group input[type="number"] {
+            flex-grow: 1; /* Permite que o input preencha o espaço disponível */
+            margin-bottom: 0; /* Remove margem padrão do input */
+            margin-right: 10px; /* Espaço entre input e unidade */
+        }
+        .input-group span {
+            font-weight: bold;
+            color: var(--cor-texto-escuro);
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <img src="logo-bons-ventos.jpg" alt="Logo Bons Ventos Transporte e Logística" class="logo" />
-    <p>Soluções completas em transporte de cargas a granel e negociação.</p>
-  </header>
+    <header>
+        <img src="logo-bons-ventos.jpg" alt="Logo Bons Ventos Transporte e Logística" class="logo">
+        <p>Soluções completas em transporte de cargas a granel e negociação.</p>
+    </header>
 
-  <nav>
-    <button id="navServicos" onclick="showSection('servicos')">Serviços</button>
-    <button id="navContatoPrincipal" onclick="showSection('contato_principal')">Contato</button>
-    <button id="navContatoDireto" onclick="showSection('contato_direto')">Fale Conosco</button>
-  </nav>
+    <nav>
+        <button id="navServicos" onclick="showSection('servicos')">Serviços</button>
+        <button id="navContatoPrincipal" onclick="showSection('contato_principal')">Faça seu Orçamento</button>
+    </nav>
 
-  <div class="container">
-    <section id="servicos" class="active">
-      <h2>Nossos Serviços</h2>
-      <ul>
-        <li><strong>Transporte de Cargas a Granel:</strong> Movimentação eficiente e segura de grãos, minérios e outros materiais a granel.</li>
-        <li><strong>Compra e Venda de Granel:</strong> Negociação de produtos a granel, oferecendo as melhores condições de mercado.</li>
-        <li><strong>Logística Otimizada:</strong> Planejamento e execução para otimizar suas operações de transporte e armazenamento.</li>
-      </ul>
-    </section>
+    <div class="container">
+        <section id="servicos" class="active">
+            <h2>Nossos Serviços</h2>
+            <p>A Bons Ventos Transporte e Logística oferece soluções especializadas para as suas necessidades:</p>
+            <ul>
+                <li>**Transporte de Cargas a Granel:** Movimentação eficiente e segura de grãos, minérios e outros materiais a granel.</li>
+                <li>**Compra e Venda de Granel:** Negociação de produtos a granel, oferecendo as melhores condições de mercado.</li>
+                <li>**Logística Otimizada:** Planejamento e execução para otimizar suas operações de transporte e armazenamento.</li>
+            </ul>
+            <p>Conte com a expertise da Bons Ventos para levar seu negócio mais longe!</p>
+        </section>
 
-    <section id="contato_principal">
-      <h2>Fale Conosco / Solicite um Orçamento</h2>
-      <form action="https://formspree.io/f/mrbkrbbl" method="POST" onsubmit="exibirMensagemSucessoContato(event)">
-        <label for="nomeContato">Seu Nome Completo:</label>
-        <input type="text" id="nomeContato" name="Nome_Completo" required />
+        <section id="contato_principal">
+            <h2>Faça seu Orçamento Online</h2>
+            <p>Preencha seus dados de contato e os detalhes da sua carga para solicitar um orçamento. Entraremos em contato o mais breve possível!</p>
+            <form action="https://formspree.io/f/mrbkrbbl" method="POST">
+                <label for="nomeContato">Seu Nome Completo:</label>
+                <input type="text" id="nomeContato" name="Nome_Completo" required>
 
-        <label for="emailContato">Seu Email:</label>
-        <input type="email" id="emailContato" name="Email_Contato" required />
+                <label for="emailContato">Seu Email:</label>
+                <input type="email" id="emailContato" name="Email_Contato" required>
 
-        <label for="telefoneContato">Seu Telefone:</label>
-        <input type="tel" id="telefoneContato" name="Telefone_Contato" />
+                <label for="telefoneContato">Seu Telefone:</label>
+                <input type="tel" id="telefoneContato" name="Telefone_Contato">
 
-        <label for="tipoContato">O que você precisa?</label>
-        <select id="tipoContato" name="Tipo_de_Contato" required onchange="mostrarCamposAdicionais()">
-          <option value="">Selecione uma opção</option>
-          <option value="orcamento">Solicitar Orçamento de Frete</option>
-          <option value="duvida_interesse">Tirar Dúvida / Registrar Interesse</option>
-        </select>
+                <h3 style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">Detalhes da Carga para Orçamento</h3>
+                
+                <label for="tipoGranel">Tipo de Granel:</label>
+                <input type="text" id="tipoGranel" name="Tipo_de_Granel" placeholder="Ex: Soja, Minério de Ferro, Grãos" required>
 
-        <div id="camposOrcamento" class="hidden-fields">
-          <h3>Detalhes do Orçamento</h3>
-          <label for="tipoGranel">Tipo de Granel:</label>
-          <input type="text" id="tipoGranel" name="Tipo_de_Granel" />
+                <label for="origemCarga">Origem da Carga:</label>
+                <input type="text" id="origemCarga" name="Origem_Carga" required>
 
-          <label for="origemCarga">Origem da Carga:</label>
-          <input type="text" id="origemCarga" name="Origem_Carga" />
+                <label for="destinoCarga">Destino da Carga:</label>
+                <input type="text" id="destinoCarga" name="Destino_Carga" required>
+                
+                <div class="input-group">
+                    <label for="pesoCarga">Peso da Carga:</label>
+                    <input type="number" id="pesoCarga" name="Peso_Carga" min="0" step="0.01" required>
+                    <span>toneladas</span>
+                </div>
+                
+                <label for="observacoesOrcamento">Observações Adicionais:</label>
+                <textarea id="observacoesOrcamento" rows="5" name="Observacoes_Orcamento" placeholder="Informações extras sobre a carga ou o transporte."></textarea>
 
-          <label for="destinoCarga">Destino da Carga:</label>
-          <input type="text" id="destinoCarga" name="Destino_Carga" />
+                <button type="submit">Solicitar Orçamento</button>
+            </form>
+        </section>
 
-          <div class="input-group">
-            <label for="pesoCarga">Peso da Carga:</label>
-            <input type="number" id="pesoCarga" name="Peso_Carga" min="0" step="0.01" />
-            <span>toneladas</span>
-          </div>
-
-          <label for="observacoesOrcamento">Observações Adicionais:</label>
-          <textarea id="observacoesOrcamento" name="Observacoes_Orcamento" rows="5"></textarea>
         </div>
 
-        <div id="camposDuvidaInteresse" class="hidden-fields">
-          <h3>Sua Mensagem</h3>
-          <label for="mensagemDuvidaInteresse">Por favor, descreva sua dúvida ou interesse:</label>
-          <textarea id="mensagemDuvidaInteresse" name="Mensagem_Duvida_Interesse" rows="5"></textarea>
-        </div>
+    <footer>
+        <p>© 2025 Bons Ventos Transporte e Logística. Todos os direitos reservados.</p>
+        <p style="margin-top: 10px;">
+            <a href="tel:+553171508006" style="color: white; text-decoration: none; margin: 0 10px;">Telefone: (31) 7150-8006</a> | 
+            <a href="https://api.whatsapp.com/send?phone=553171508006&text=Ol%C3%A1%2C%20Bons%20Ventos%20Transporte%20e%20Log%C3%ADstica!%20Gostaria%20de%20fazer%20um%20contato." target="_blank" style="color: white; text-decoration: none; margin: 0 10px;">WhatsApp</a> | 
+            <a href="mailto:contato@bonsventostransportes.com" style="color: white; text-decoration: none; margin: 0 10px;">Email</a>
+        </p>
+    </footer>
 
-        <button type="submit">Enviar Solicitação</button>
-      </form>
+    <script>
+        // Funções JavaScript
+        function showSection(sectionId) {
+            // Oculta todas as seções
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.remove('active');
+            });
+            // Mostra a seção desejada
+            document.getElementById(sectionId).classList.add('active');
 
-      <div id="mensagemContato" class="info-box" style="display: none;"></div>
-    </section>
+            // Remove a classe 'active-nav-button' de todos os botões de navegação
+            document.querySelectorAll('nav button').forEach(button => {
+                button.classList.remove('active-nav-button');
+            });
+            // Adiciona a classe 'active-nav-button' apenas ao botão clicado
+            const clickedButtonId = 'nav' + sectionId.charAt(0).toUpperCase() + sectionId.slice(1).replace('_', '');
+            document.getElementById(clickedButtonId).classList.add('active-nav-button');
+        }
 
-    <section id="contato_direto">
-      <h2>Canais de Contato Direto</h2>
-      <ul class="contact-list">
-        <li><a href="tel:+553171508006"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Phone_font_awesome.svg/1200px-Phone_font_awesome.svg.png" alt="Telefone" />Telefone: (31) 7150-8006</a></li>
-        <li><a href="https://api.whatsapp.com/send?phone=553171508006" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />WhatsApp: (31) 7150-8006</a></li>
-        <li><a href="mailto:contato@bonsventostransportes.com"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mail_%28iOS%29.svg" alt="Email" />Email: contato@bonsventostransportes.com</a></li>
-        <li><a href="http://maps.google.com/maps?q=Rua%20Exemplo%2C%20123%20Centro%2C%20Paracatu%2FMG" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Maps_icon_%282020%29.svg" alt="Endereço" />Endereço: Rua Exemplo, 123 - Centro, Paracatu/MG</a></li>
-      </ul>
-    </section>
-  </div>
-
-  <footer>
-    <p>© 2025 Bons Ventos Transporte e Logística. Todos os direitos reservados.</p>
-  </footer>
-
-  <script>
-    function showSection(sectionId) {
-      document.querySelectorAll("section").forEach((section) => {
-        section.classList.remove("active");
-      });
-      document.getElementById(sectionId).classList.add("active");
-
-      document.querySelectorAll("nav button").forEach((button) => {
-        button.classList.remove("active-nav-button");
-      });
-      const clickedButtonId = "nav" + sectionId.charAt(0).toUpperCase() + sectionId.slice(1).replace("_", "");
-      document.getElementById(clickedButtonId).classList.add("active-nav-button");
-    }
-
-    function mostrarCamposAdicionais() {
-      const tipoContato = document.getElementById("tipoContato").value;
-      const camposOrcamento = document.getElementById("camposOrcamento");
-      const camposDuvidaInteresse = document.getElementById("camposDuvidaInteresse");
-
-      camposOrcamento.style.display = "none";
-      camposDuvidaInteresse.style.display = "none";
-
-      const camposOrcamentoInputs = [
-        document.getElementById("tipoGranel"),
-        document.getElementById("origemCarga"),
-        document.getElementById("destinoCarga"),
-        document.getElementById("pesoCarga")
-      ];
-      camposOrcamentoInputs.forEach((field) => (field.required = false));
-      document.getElementById("observacoesOrcamento").required = false;
-      document.getElementById("mensagemDuvidaInteresse").required = false;
-
-      if (tipoContato === "orcamento") {
-        camposOrcamento.style.display = "block";
-        camposOrcamentoInputs.forEach((field) => (field.required = true));
-      } else if (tipoContato === "duvida_interesse") {
-        camposDuvidaInteresse.style.display = "block";
-        document.getElementById("mensagemDuvidaInteresse").required = true;
-      }
-    }
-
-    function exibirMensagemSucessoContato(event) {
-      event.preventDefault();
-      const nome = document.getElementById("nomeContato").value;
-      const mensagemDiv = document.getElementById("mensagemContato");
-
-      mensagemDiv.style.display = "block";
-      mensagemDiv.innerHTML = `Obrigado, <strong>${nome}</strong>! Sua solicitação foi enviada com sucesso! Entraremos em contato em breve.`;
-
-      event.target.reset();
-      document.getElementById("camposOrcamento").style.display = "none";
-      document.getElementById("camposDuvidaInteresse").style.display = "none";
-      document.getElementById("tipoContato").value = "";
-
-      setTimeout(() => {
-        event.target.submit();
-      }, 500);
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      showSection("servicos");
-      document.getElementById("tipoContato").value = "";
-      mostrarCamposAdicionais();
-    });
-  </script>
+        // Garante que a seção de serviços seja mostrada ao carregar a página
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('servicos'); 
+        });
+    </script>
 </body>
 </html>
