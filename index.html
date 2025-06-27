@@ -177,6 +177,31 @@
             color: var(--cor-texto-claro);
             font-size: 0.9rem;
         }
+        /* Estilos para os links de contato direto com ícones */
+        .contact-list {
+            list-style: none;
+            padding: 0;
+        }
+        .contact-list li {
+            margin-bottom: 15px;
+        }
+        .contact-list a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--cor-texto-escuro); /* Links escuros dentro do container branco */
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+        .contact-list a:hover {
+            color: var(--cor-principal-azul); /* Azul principal no hover dos links */
+        }
+        .contact-list a img {
+            vertical-align: middle;
+            height: 28px;
+            margin-right: 10px;
+        }
         /* Estilos para os campos de número com unidade */
         .input-group {
             display: flex; /* Para alinhar o input e a unidade */
@@ -208,7 +233,7 @@
     <nav>
         <button id="navServicos" onclick="showSection('servicos')">Serviços</button>
         <button id="navContatoPrincipal" onclick="showSection('contato_principal')">Faça seu Orçamento</button>
-    </nav>
+        <button id="navContatoDireto" onclick="showSection('contato_direto')">Fale Conosco</button> </nav>
 
     <div class="container">
         <section id="servicos" class="active">
@@ -259,7 +284,32 @@
             </form>
         </section>
 
-        </div>
+        <section id="contato_direto">
+            <h2>Canais de Contato Direto</h2>
+            <p>Para um contato rápido e direto, utilize os canais abaixo:</p>
+            <ul class="contact-list">
+                <li>
+                    <a href="tel:+553171508006">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Phone_font_awesome.svg/1200px-Phone_font_awesome.svg.png" alt="Telefone">
+                        Telefone: (31) 7150-8006
+                    </a>
+                </li>
+                <li>
+                    <a href="https://api.whatsapp.com/send?phone=553171508006&text=Ol%C3%A1%2C%20Bons%20Ventos%20Transporte%20e%20Log%C3%ADstica!%20Gostaria%20de%20fazer%20um%20contato." target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+                        WhatsApp: (31) 7150-8006
+                    </a>
+                </li>
+                <li>
+                    <a href="mailto:contato@bonsventostransportes.com">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mail_%28iOS%29.svg" alt="Email">
+                        Email: contato@bonsventostransportes.com
+                    </a>
+                </li>
+            </ul>
+            <p>Estamos prontos para te atender!</p>
+        </section>
+    </div>
 
     <footer>
         <p>© 2025 Bons Ventos Transporte e Logística. Todos os direitos reservados.</p>
