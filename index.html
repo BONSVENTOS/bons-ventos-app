@@ -306,7 +306,7 @@
             mensagemDiv.style.display = 'block';
             mensagemDiv.innerHTML = `Obrigado, **${nome}**! Sua solicitação foi enviada com sucesso! Entraremos em contato em breve.`;
 
-            event.target.reset(); // Limpa o formulário
+            event.target.reset(); // CORREÇÃO: Removido 'aid ' extra aqui.
 
             // Oculta os campos adicionais após o reset e reseta a seleção
             document.getElementById('camposOrcamento').style.display = 'none';
