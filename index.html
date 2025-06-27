@@ -8,69 +8,90 @@
         /* Estilos CSS */
         :root {
             /* Definindo variáveis CSS para as cores base da sua logo */
-            --cor-principal-azul: #004D99; /* Azul escuro da logo */
-            --cor-secundaria-azul: #007bff; /* Azul um pouco mais claro para destaque */
+            --cor-principal-azul: #0D1B6F; /* Um azul mais escuro e profundo da logo */
+            --cor-secundaria-azul: #007bff; /* Azul padrão para acentos, se necessário */
             --cor-fundo-claro: #f4f4f4;
             --cor-texto-escuro: #333;
             --cor-texto-claro: white;
             --cor-sucesso-fundo: #d4edda;
             --cor-sucesso-borda: #28a745;
             --cor-sucesso-texto: #155724;
+            --cor-nav-links: #FFFFFF; /* Branco para os links da navegação */
         }
 
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--cor-fundo-claro);
-            color: var(--cor-texto-escuro);
+            background-color: var(--cor-principal-azul); /* Fundo da página com o azul da logo */
+            color: var(--cor-texto-claro); /* Texto padrão claro para contrastar com o fundo */
             line-height: 1.6;
         }
-        header {
-            background-color: var(--cor-principal-azul); /* Usando o azul da logo */
-            color: var(--cor-texto-claro);
-            padding: 1rem 0;
-            text-align: center;
-        }
-        header img.logo { /* Estilo específico para a logo no cabeçalho */
-            max-width: 250px; /* Tamanho máximo da logo */
-            height: auto;
-            display: block; /* Para centralizar a imagem */
-            margin: 0 auto 10px auto; /* Centraliza e adiciona margem inferior */
-        }
-        header p {
-            margin-top: 0; /* Ajusta margem para não ter muito espaço entre logo e descrição */
-        }
 
-        nav {
-            background-color: #004085; /* Um tom ligeiramente diferente para a navegação */
-            padding: 0.5rem 0;
-            text-align: center;
-        }
-        nav button {
-            background-color: var(--cor-secundaria-azul); /* Usando o azul de destaque da logo */
-            color: var(--cor-texto-claro);
-            border: none;
-            padding: 0.8rem 1.2rem;
-            margin: 0 0.5rem;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.3s ease;
-        }
-        nav button:hover {
-            background-color: var(--cor-principal-azul); /* Escurece no hover para o azul principal */
-        }
+        /* Estilo para o container principal do conteúdo */
         .container {
             max-width: 900px;
             margin: 20px auto;
-            background-color: var(--cor-texto-claro);
+            background-color: var(--cor-texto-claro); /* Fundo branco para o conteúdo interno */
+            color: var(--cor-texto-escuro); /* Texto escuro dentro do container branco */
             padding: 20px 30px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
+
+        header {
+            background-color: var(--cor-principal-azul); /* Continua com o azul principal */
+            color: var(--cor-texto-claro);
+            padding: 2rem 0; /* Aumenta o padding para dar mais espaço à logo */
+            text-align: center;
+        }
+        header img.logo {
+            max-width: 280px; /* Aumenta um pouco a logo */
+            height: auto;
+            display: block;
+            margin: 0 auto 15px auto; /* Mais margem abaixo da logo */
+            filter: drop-shadow(0 0 8px rgba(0,0,0,0.4)); /* Adiciona uma pequena sombra para destacar */
+        }
+        header p {
+            font-size: 1.1rem;
+            margin-top: 0;
+            padding: 0 20px; /* Um pouco de padding para o texto da descrição */
+            color: rgba(255, 255, 255, 0.9); /* Um branco um pouco mais suave */
+        }
+
+        nav {
+            background-color: var(--cor-principal-azul); /* Navegação no mesmo azul da logo */
+            padding: 0.8rem 0; /* Mais padding para os botões */
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1); /* Linha sutil para separar do header */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Sombra para dar profundidade */
+        }
+        nav button {
+            background-color: rgba(255, 255, 255, 0.1); /* Botões semi-transparentes sobre o azul */
+            color: var(--cor-nav-links); /* Cor do texto do botão branco */
+            border: 1px solid rgba(255, 255, 255, 0.3); /* Borda sutil */
+            padding: 0.8rem 1.5rem; /* Aumenta o padding */
+            margin: 0 0.6rem; /* Mais espaçamento entre botões */
+            border-radius: 25px; /* Deixa os botões mais arredondados (pílula) */
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        nav button:hover {
+            background-color: rgba(255, 255, 255, 0.25); /* Fica mais opaco no hover */
+            border-color: var(--cor-nav-links); /* Borda fica branca sólida */
+        }
+        /* Estilo para o botão da seção ativa */
+        nav button.active-nav-button {
+            background-color: var(--cor-secundaria-azul); /* Usa o azul de destaque para o botão ativo */
+            border-color: var(--cor-secundaria-azul);
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Sombra para o botão ativo */
+        }
+
+
         section {
-            display: none; /* Todas as seções começam ocultas */
+            display: none;
             padding: 20px 0;
             border-top: 1px solid #eee;
             margin-top: 20px;
@@ -80,40 +101,59 @@
             margin-top: 0;
         }
         section.active {
-            display: block; /* A seção ativa é exibida */
+            display: block;
         }
         h2 {
-            color: var(--cor-secundaria-azul); /* Títulos no azul de destaque */
-            border-bottom: 2px solid #eee;
+            color: var(--cor-principal-azul); /* Títulos no azul principal */
+            border-bottom: 2px solid var(--cor-principal-azul); /* Borda do título no azul principal */
             padding-bottom: 10px;
             margin-bottom: 20px;
+        }
+        h3 {
+            color: var(--cor-principal-azul); /* Subtítulos no azul principal */
         }
         label {
             display: block;
             margin-bottom: 8px;
             font-weight: bold;
+            color: var(--cor-texto-escuro); /* Cor do label dentro do container */
         }
         input[type="text"],
         input[type="email"],
         input[type="tel"],
+        input[type="number"], /* Adicionado estilo para input number */
         textarea,
-        select { /* Adicionado 'select' para estilizar o dropdown */
+        select {
             width: calc(100% - 20px);
             padding: 10px;
             margin-bottom: 15px;
             border: 1px solid #ddd;
             border-radius: 4px;
             font-size: 1rem;
+            color: var(--cor-texto-escuro);
         }
+        /* Ajuste para inputs number para evitar barras de rolagem desnecessárias */
+        input[type="number"] {
+            -moz-appearance: textfield; /* Para Firefox */
+        }
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+
         button[type="submit"] {
-            background-color: var(--cor-sucesso-borda); /* Verde para o botão de envio */
+            background-color: var(--cor-sucesso-borda);
             color: var(--cor-texto-claro);
             border: none;
-            padding: 10px 20px;
+            padding: 12px 25px; /* Aumentado um pouco o botão de submit */
             border-radius: 5px;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 1.1rem; /* Fonte um pouco maior */
+            font-weight: bold;
             transition: background-color 0.3s ease;
+            margin-top: 20px; /* Mais espaço acima do botão */
         }
         button[type="submit"]:hover {
             background-color: #218838;
@@ -126,31 +166,56 @@
             border-radius: 4px;
             color: var(--cor-sucesso-texto);
         }
-        .hidden-fields { /* Estilo para esconder/mostrar campos */
+        .hidden-fields {
             display: none;
         }
         footer {
             text-align: center;
             padding: 20px;
             margin-top: 30px;
-            background-color: var(--cor-texto-escuro);
+            background-color: var(--cor-principal-azul); /* Rodapé com o azul principal */
             color: var(--cor-texto-claro);
             font-size: 0.9rem;
         }
         /* Estilos para os links de contato direto com ícones */
+        .contact-list {
+            list-style: none;
+            padding: 0;
+        }
+        .contact-list li {
+            margin-bottom: 15px;
+        }
         .contact-list a {
-            display: flex; /* Permite alinhar ícone e texto */
-            align-items: center; /* Alinha verticalmente */
+            display: flex;
+            align-items: center;
             text-decoration: none;
-            color: var(--cor-texto-escuro);
+            color: var(--cor-texto-escuro); /* Links escuros dentro do container branco */
             font-weight: bold;
             font-size: 1.1em;
-            margin-bottom: 15px; /* Espaçamento entre os itens */
+            transition: color 0.3s ease;
+        }
+        .contact-list a:hover {
+            color: var(--cor-principal-azul); /* Azul principal no hover dos links */
         }
         .contact-list a img {
             vertical-align: middle;
             height: 28px;
             margin-right: 10px;
+        }
+        /* Estilos para os campos de número com unidade */
+        .input-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .input-group input[type="number"] {
+            flex-grow: 1; /* Permite que o input preencha o espaço disponível */
+            margin-bottom: 0; /* Remove margem padrão do input */
+            margin-right: 10px; /* Espaço entre input e unidade */
+        }
+        .input-group span {
+            font-weight: bold;
+            color: var(--cor-texto-escuro);
         }
     </style>
 </head>
@@ -161,9 +226,9 @@
     </header>
 
     <nav>
-        <button onclick="showSection('servicos')">Serviços</button>
-        <button onclick="showSection('contato_principal')">Contato</button>
-        <button onclick="showSection('contato_direto')">Fale Conosco</button>
+        <button id="navServicos" onclick="showSection('servicos')">Serviços</button>
+        <button id="navContatoPrincipal" onclick="showSection('contato_principal')">Contato</button>
+        <button id="navContatoDireto" onclick="showSection('contato_direto')">Fale Conosco</button>
     </nav>
 
     <div class="container">
@@ -200,14 +265,41 @@
 
                 <div id="camposOrcamento" class="hidden-fields">
                     <h3 style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">Detalhes do Orçamento</h3>
+                    <div class="input-group">
+                        <label for="pesoCarga">Peso da Carga:</label>
+                        <input type="number" id="pesoCarga" name="Peso_Carga" min="0" step="0.01">
+                        <span>toneladas</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="comprimentoCarga">Comprimento:</label>
+                        <input type="number" id="comprimentoCarga" name="Comprimento_Carga" min="0" step="0.01">
+                        <span>metros</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="larguraCarga">Largura:</label>
+                        <input type="number" id="larguraCarga" name="Largura_Carga" min="0" step="0.01">
+                        <span>metros</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="alturaCarga">Altura:</label>
+                        <input type="number" id="alturaCarga" name="Altura_Carga" min="0" step="0.01">
+                        <span>metros</span>
+                    </div>
+
                     <label for="origemCarga">Origem da Carga:</label>
                     <input type="text" id="origemCarga" name="Origem_Carga">
 
                     <label for="destinoCarga">Destino da Carga:</label>
                     <input type="text" id="destinoCarga" name="Destino_Carga">
 
-                    <label for="detalhesOrcamento">Detalhes da Carga (tipo de granel, peso, dimensões):</label>
-                    <textarea id="detalhesOrcamento" rows="5" name="Detalhes_Carga_Orcamento"></textarea>
+                    <label for="tipoGranel">Tipo de Granel:</label>
+                    <input type="text" id="tipoGranel" name="Tipo_de_Granel" placeholder="Ex: Soja, Minério de Ferro, Grãos">
+
+                    <label for="observacoesOrcamento">Observações Adicionais para o Orçamento:</label>
+                    <textarea id="observacoesOrcamento" rows="5" name="Observacoes_Orcamento"></textarea>
                 </div>
 
                 <div id="camposDuvidaInteresse" class="hidden-fields">
@@ -224,7 +316,7 @@
         <section id="contato_direto">
             <h2>Canais de Contato Direto</h2>
             <p>Para um contato rápido e direto, utilize os canais abaixo:</p>
-            <ul style="list-style: none; padding: 0;" class="contact-list">
+            <ul class="contact-list">
                 <li>
                     <a href="tel:+553171508006">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Phone_font_awesome.svg/1200px-Phone_font_awesome.svg.png" alt="Telefone">
@@ -244,7 +336,7 @@
                     </a>
                 </li>
                  <li>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Rua%20Exemplo%2C%20123%20Paracatu%20Minas%20Gerais" target="_blank">
+                    <a href="https://www.google.com/maps/search/Rua+Exemplo,+123+-+Centro,+Paracatu/MG" target="_blank">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Maps_icon_%282020%29.svg" alt="Endereço">
                         Endereço: Rua Exemplo, 123 - Centro, Paracatu/MG (Mude seu endereço aqui)
                     </a>
@@ -267,6 +359,14 @@
             });
             // Mostra a seção desejada
             document.getElementById(sectionId).classList.add('active');
+
+            // Remove a classe 'active-nav-button' de todos os botões de navegação
+            document.querySelectorAll('nav button').forEach(button => {
+                button.classList.remove('active-nav-button');
+            });
+            // Adiciona a classe 'active-nav-button' apenas ao botão clicado
+            const clickedButtonId = 'nav' + sectionId.charAt(0).toUpperCase() + sectionId.slice(1).replace('_', '');
+            document.getElementById(clickedButtonId).classList.add('active-nav-button');
         }
 
         // Função para mostrar/esconder campos adicionais no formulário de contato unificado
@@ -278,18 +378,24 @@
             camposOrcamento.style.display = 'none';
             camposDuvidaInteresse.style.display = 'none';
 
-            // Adiciona/remove o atributo 'required' dinamicamente para os campos adicionais
-            // Campos de orçamento
-            document.getElementById('origemCarga').required = false;
-            document.getElementById('destinoCarga').required = false;
+            // Adiciona/remove o atributo 'required' dinamicamente para os campos adicionais de orçamento
+            const camposOrcamentoRequired = [
+                document.getElementById('pesoCarga'),
+                document.getElementById('comprimentoCarga'),
+                document.getElementById('larguraCarga'),
+                document.getElementById('alturaCarga'),
+                document.getElementById('origemCarga'),
+                document.getElementById('destinoCarga')
+            ];
+            camposOrcamentoRequired.forEach(field => field.required = false);
+
             // Campos de dúvida/interesse
             document.getElementById('mensagemDuvidaInteresse').required = false;
 
 
             if (tipoContato === 'orcamento') {
                 camposOrcamento.style.display = 'block';
-                document.getElementById('origemCarga').required = true;
-                document.getElementById('destinoCarga').required = true;
+                camposOrcamentoRequired.forEach(field => field.required = true); // Torna obrigatórios
             } else if (tipoContato === 'duvida_interesse') {
                 camposDuvidaInteresse.style.display = 'block';
                 document.getElementById('mensagemDuvidaInteresse').required = true;
@@ -306,7 +412,7 @@
             mensagemDiv.style.display = 'block';
             mensagemDiv.innerHTML = `Obrigado, **${nome}**! Sua solicitação foi enviada com sucesso! Entraremos em contato em breve.`;
 
-            event.target.reset(); // CORREÇÃO: Removido 'aid ' extra aqui.
+            event.target.reset(); // Limpa o formulário
 
             // Oculta os campos adicionais após o reset e reseta a seleção
             document.getElementById('camposOrcamento').style.display = 'none';
@@ -321,7 +427,7 @@
 
         // Garante que a seção de serviços seja mostrada ao carregar a página
         document.addEventListener('DOMContentLoaded', () => {
-            showSection('servicos');
+            showSection('servicos'); // Garante que a seção de serviços esteja ativa inicialmente
             mostrarCamposAdicionais(); // Garante que os campos extras estejam ocultos no início
         });
     </script>
